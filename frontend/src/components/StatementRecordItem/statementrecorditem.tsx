@@ -1,6 +1,6 @@
 import React from "react";
 import { Decimal } from "decimal.js";
-import { StatementRecord } from "../../../../shared/types";
+import { StatementRecord } from "@customer-statement-processor/shared";
 
 interface StatementRecordItemProps {
   record: StatementRecord;

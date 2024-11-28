@@ -1,6 +1,6 @@
 import Decimal from "decimal.js";
 import { z } from "zod";
-import { StatementRecord } from "../../../shared/types";
+import { StatementRecord } from "@customer-statement-processor/shared";
 
 const RawXMLRecordSchema = z.object({
   reference: z

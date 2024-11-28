@@ -2,7 +2,7 @@ import Decimal from "decimal.js";
 import {
   StatementRecord,
   StatementRecordValidationResult,
-} from "../../../shared/types";
+} from "@customer-statement-processor/shared";
 
 class StatementProcessorAPI {
   private baseURL: string = "http://localhost:3000/api";

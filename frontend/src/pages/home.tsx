@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FileValidationMananager from "../components/FileValidationManager/filevalidationmanager";
-import { StatementRecordValidationResult } from "../../../shared/types";
+import { StatementRecordValidationResult } from "@customer-statement-processor/shared";
 import { StatementRecordList } from "../components/StatementRecordList/statementrecordlist";
 
 const Home = () => {

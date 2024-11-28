@@ -1,4 +1,7 @@
-import { StatementRecord, StatementRecordError } from "../../../shared/types";
+import {
+  StatementRecord,
+  StatementRecordError,
+} from "@customer-statement-processor/shared";
 
 export const hasUniqueReference = (
   record: StatementRecord,

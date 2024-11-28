@@ -2,7 +2,7 @@ import { useState } from "react";
 import FileInput from "../FileInput/fileinput";
 import Button from "../Button/button";
 import statementProcessorApi from "../../api/api";
-import { StatementRecordValidationResult } from "../../../../shared/types";
+import { StatementRecordValidationResult } from "@customer-statement-processor/shared";
 
 type FileValidationMananagerProps = {
   onValidate?: (statementRecords: StatementRecordValidationResult) => void;

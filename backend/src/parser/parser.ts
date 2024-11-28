@@ -1,4 +1,4 @@
-import { StatementRecord } from "../../../shared/types";
+import { StatementRecord } from "@customer-statement-processor/shared";
 import { parse as CSVParser } from "csv-parse/sync";
 import { RawCSVRecordArraySchema, transformCSVRecord } from "./csv";
 import { RawXMLRecordArraySchema, transformXMLRecord } from "./xml";

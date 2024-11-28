@@ -1,5 +1,5 @@
 import React from "react";
-import { StatementRecordError } from "../../../../shared/types";
+import { StatementRecordError } from "@customer-statement-processor/shared";
 
 interface StatementRecordErrorProps {
   error: StatementRecordError;

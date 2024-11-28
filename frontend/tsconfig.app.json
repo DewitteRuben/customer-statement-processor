@@ -14,6 +14,9 @@
     "noEmit": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
+    "paths": {
+      "@customer-statement-processor/shared": ["../shared/types.ts"]
+    },
     "types": ["jest", "node", "@types/jest"],
     /* Linting */
     "strict": true,

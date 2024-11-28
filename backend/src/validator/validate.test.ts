@@ -4,7 +4,7 @@ import {
   validateBalance,
   validateRecords,
 } from "./validate";
-import { StatementRecord } from "../../../shared/types";
+import { StatementRecord } from "@customer-statement-processor/shared";
 
 describe("Statement Record Validation", () => {
   describe("hasUniqueReference", () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { StatementRecordItem } from "../StatementRecordItem/statementrecorditem";
-import { StatementRecordValidationResult } from "../../../../shared/types";
+import { StatementRecordValidationResult } from "@customer-statement-processor/shared";
 import { StatementRecordErrorItem } from "../StatementRecordErrorItem/statementrecorderroritem";
 
 interface StatementRecordListProps {
