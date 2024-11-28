@@ -2,7 +2,7 @@ import { StatementRecord, StatementRecordError } from "../../../shared/types";
 
 export const hasUniqueReference = (
   record: StatementRecord,
-  existingReferences: Set<number>
+  existingReferences: Set<number>,
 ): boolean => {
   return !existingReferences.has(record.reference);
 };
@@ -13,7 +13,7 @@ export const validateBalance = (record: StatementRecord): boolean => {
 };
 
 export const validateRecords = (
-  records: StatementRecord[]
+  records: StatementRecord[],
 ): StatementRecordError[] => {
   const referenceSet = new Set<number>();
   const duplicateReferences = new Set<number>();

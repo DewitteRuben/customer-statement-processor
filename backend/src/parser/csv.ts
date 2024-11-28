@@ -38,7 +38,7 @@ export const RawCSVRecordArraySchema = z.array(RawCSVRecordSchema);
 export type RawCSVRecord = z.infer<typeof RawCSVRecordSchema>;
 
 export const transformCSVRecord = (
-  rawRecord: RawCSVRecord
+  rawRecord: RawCSVRecord,
 ): StatementRecord => {
   return {
     reference: parseInt(rawRecord.Reference),

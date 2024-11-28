@@ -57,7 +57,7 @@ export const StatementRecordList: React.FC<StatementRecordListProps> = ({
             <tbody className="bg-white divide-y divide-gray-200">
               {validationResult.records.map((record, index) => {
                 const hasError = validationResult.errors.some(
-                  (error) => error.record.reference === record.reference
+                  (error) => error.record.reference === record.reference,
                 );
 
                 return (

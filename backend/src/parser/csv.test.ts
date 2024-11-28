@@ -48,7 +48,7 @@ describe("StatementRecordParser CSV", () => {
       } as Express.Multer.File;
 
       expect(() => statementRecordParser.parse(mockCSVFile)).toThrow(
-        "Reference is required"
+        "Reference is required",
       );
     });
 
@@ -61,7 +61,7 @@ describe("StatementRecordParser CSV", () => {
       } as Express.Multer.File;
 
       expect(() => statementRecordParser.parse(mockCSVFile)).toThrow(
-        "Reference must be a valid number"
+        "Reference must be a valid number",
       );
     });
   });
@@ -70,7 +70,7 @@ describe("StatementRecordParser CSV", () => {
     it("should handle empty CSV file", () => {
       const mockEmptyCSVFile = {
         buffer: Buffer.from(
-          "Reference,Account Number,Description,Start Balance,Mutation,End Balance"
+          "Reference,Account Number,Description,Start Balance,Mutation,End Balance",
         ),
         mimetype: "text/csv",
       } as Express.Multer.File;

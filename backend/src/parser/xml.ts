@@ -38,7 +38,7 @@ export const RawXMLRecordArraySchema = z.object({
 export type RawXMLRecord = z.infer<typeof RawXMLRecordSchema>;
 
 export const transformXMLRecord = (
-  rawRecord: RawXMLRecord
+  rawRecord: RawXMLRecord,
 ): StatementRecord => {
   return {
     reference: parseInt(rawRecord.reference),

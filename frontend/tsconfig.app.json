@@ -3,11 +3,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -18,11 +14,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "types": [
-      "jest",
-      "node",
-      "@types/jest"
-    ],
+    "types": ["jest", "node", "@types/jest"],
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -30,9 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": [
-    "../shared/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ]
+  "include": ["../shared/**/*.ts", "./src/**/*.tsx", "./src/**/*.ts"]
 }

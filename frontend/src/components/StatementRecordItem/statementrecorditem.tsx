@@ -33,7 +33,7 @@ export const StatementRecordItem: React.FC<StatementRecordItemProps> = ({
       </td>
       <td
         className={`px-6 py-4 whitespace-nowrap text-sm text-right ${getMutationColorClass(
-          record.mutation
+          record.mutation,
         )}`}
       >
         {record.mutation.isPos() ? "+" : ""}

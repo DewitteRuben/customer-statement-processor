@@ -15,9 +15,7 @@ describe("FileInput Component", () => {
 
     render(<FileInput />);
 
-    const input = screen.getByLabelText(
-      /Click to upload a file/i
-    );
+    const input = screen.getByLabelText(/Click to upload a file/i);
 
     fireEvent.change(input, { target: { files: [testFile] } });
 
@@ -34,9 +32,7 @@ describe("FileInput Component", () => {
 
     render(<FileInput onFileSelect={onFileSelectMock} />);
 
-    const input = screen.getByLabelText(
-      "Click to upload a file"
-    );
+    const input = screen.getByLabelText("Click to upload a file");
 
     fireEvent.change(input, { target: { files: [testFile] } });
     expect(onFileSelectMock).toHaveBeenCalledWith(testFile);

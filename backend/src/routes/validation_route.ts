@@ -31,12 +31,11 @@ router.post(
       res
         .status(200)
         .json({ records: statementRecords, errors: erroneousRecords });
-
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "failed to parse records" });
     }
-  }
+  },
 );
 
 export default router;

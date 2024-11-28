@@ -78,7 +78,7 @@ describe("StatementParser - XML Parsing", () => {
       } as Express.Multer.File;
 
       expect(() => statementRecordParser.parse(mockXMLFile)).toThrow(
-        "Reference is required"
+        "Reference is required",
       );
     });
 
@@ -97,7 +97,7 @@ describe("StatementParser - XML Parsing", () => {
       } as Express.Multer.File;
 
       expect(() => statementRecordParser.parse(mockXMLFile)).toThrow(
-        "Reference must be a valid number"
+        "Reference must be a valid number",
       );
     });
   });

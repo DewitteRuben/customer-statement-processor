@@ -25,7 +25,7 @@ class StatementProcessorAPI {
       {
         method: "POST",
         body: formData,
-      }
+      },
     ).then((res) => res.json());
 
     // Rewrap the data, converting the proper fields into Decimal objects
