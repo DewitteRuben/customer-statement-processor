@@ -1,17 +1,39 @@
 # Customer Statement Processor
 
-This tool allows customer statement records to be validated for errors. The supported formats are `.csv` and `.xml`.
+This tool validates customer statement records for errors. Supported file formats include `.csv` and `.xml`.
 
-During validation, any incorrect records will display their reference, the type of error, and the description of each record.
+During the validation process, any incorrect records will be displayed with their reference number, the type of error, and the corresponding description.
 
-Additionally, the complete list of records will be shown.
+In addition, a complete list of all records will be shown.
 
-## Running the project
+## Running the Project
 
-In the `backend/` directory
+1. **Install Dependencies**  
+   Run `npm install` in the `frontend/`, `backend/`, and project root directories to install the necessary dependencies.
 
-`npm start`
+2. **Start the Services**
 
-In the `frontend/` directory
+### Backend
 
-`npm run dev`
+Navigate to the `backend/` directory and start the backend service by running:
+
+```bash
+npm start
+```
+
+If you prefer to use Bun, you can run:
+
+```bash
+npm start:bun
+```
+
+### Frontend
+
+Navigate to the `frontend/` directory and start the frontend service by running:
+
+```bash
+npm run dev
+```
+
+3. **Access the Application**  
+   Once the services are running, visit [http://localhost:5173](http://localhost:5173) to use the application (default Vite endpoint).

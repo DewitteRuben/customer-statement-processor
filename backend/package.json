@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "bun src/index.ts",
+    "start": "ts-node src/index.ts",
+    "start:bun": "bun src/index.ts",
     "test": "jest"
   },
   "author": "",
