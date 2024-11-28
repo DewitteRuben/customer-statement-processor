@@ -31,6 +31,7 @@
     "noUncheckedSideEffectImports": true
   },
   "include": [
+    "../shared/**/*.ts",
     "./src/**/*.tsx",
     "./src/**/*.ts"
   ]
