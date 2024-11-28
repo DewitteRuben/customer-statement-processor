@@ -1,4 +1,6 @@
 import { StatementRecord } from "../../../shared/types";
+import { parse as CSVParser } from "csv-parse/sync";
+import { RawCSVRecordArraySchema, transformCSVRecord } from "./csv";
 
 export class StatementRecordParser {
   parse(file: Express.Multer.File): StatementRecord[] {
@@ -15,7 +17,16 @@ export class StatementRecordParser {
   }
 
   parseCSV(file: Express.Multer.File): StatementRecord[] {
-    throw new Error("not yet implemented");
+    const unvalidatedRecords = CSVParser(file.buffer, {
+      columns: true,
+      skip_empty_lines: true,
+      trim: true,
+    });
+
+    const records = RawCSVRecordArraySchema.parse(unvalidatedRecords);
+    const transformedRecord = records.map(transformCSVRecord);
+
+    return transformedRecord;
   }
 
   parseXML(file: Express.Multer.File): StatementRecord[] {
@@ -23,6 +34,6 @@ export class StatementRecordParser {
   }
 }
 
-const statementParser = new StatementRecordParser();
+const statementRecordParser = new StatementRecordParser();
 
-export default statementParser;
+export default statementRecordParser;
