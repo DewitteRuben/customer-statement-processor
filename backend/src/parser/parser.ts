@@ -16,7 +16,7 @@ export class StatementRecordParser {
     }
   }
 
-  parseCSV(file: Express.Multer.File): StatementRecord[] {
+  private parseCSV(file: Express.Multer.File): StatementRecord[] {
     const unvalidatedRecords = CSVParser(file.buffer, {
       columns: true,
       skip_empty_lines: true,
@@ -29,7 +29,7 @@ export class StatementRecordParser {
     return transformedRecord;
   }
 
-  parseXML(file: Express.Multer.File): StatementRecord[] {
+  private parseXML(file: Express.Multer.File): StatementRecord[] {
     throw new Error("not yet implemented");
   }
 }
