@@ -2,14 +2,23 @@ import { useState } from "react";
 import FileInput from "../FileInput/fileinput";
 import Button from "../Button/button";
 import statementProcessorApi from "../../api/api";
+import { StatementRecord } from "../../../../shared/types";
 
-const FileValidationMananager = () => {
+type FileValidationMananagerProps = {
+  onValidate?: (statementRecords: StatementRecord[]) => void;
+};
+
+const FileValidationMananager: React.FC<FileValidationMananagerProps> = ({
+  onValidate,
+}) => {
   const [file, setFile] = useState<File>();
 
   const onValidateClick = async () => {
     if (file) {
       const data = await statementProcessorApi.validate(file);
-      console.log({ data });
+      if (onValidate) {
+        onValidate(data);
+      }
     }
   };
 
