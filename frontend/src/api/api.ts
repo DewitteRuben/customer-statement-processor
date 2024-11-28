@@ -1,27 +1,41 @@
 import Decimal from "decimal.js";
-import { StatementRecord } from "../../../shared/types";
+import {
+  StatementRecord,
+  StatementRecordValidationResult,
+} from "../../../shared/types";
 
 class StatementProcessorAPI {
   private baseURL: string = "http://localhost:3000/api";
 
-  async validate(file: File): Promise<StatementRecord[]> {
+  private rehydrateRecord(record: StatementRecord) {
+    return {
+      ...record,
+      startBalance: new Decimal(record.startBalance),
+      mutation: new Decimal(record.mutation),
+      endBalance: new Decimal(record.endBalance),
+    };
+  }
+
+  async validate(file: File): Promise<StatementRecordValidationResult> {
     const formData = new FormData();
     formData.append("statement_record", file);
 
-    const data = await fetch(`${this.baseURL}/validate`, {
-      method: "POST",
-      body: formData,
-    }).then((res) => res.json());
+    const data: StatementRecordValidationResult = await fetch(
+      `${this.baseURL}/validate`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((res) => res.json());
 
     // Rewrap the data, converting the proper fields into Decimal objects
-    const wrappedData: StatementRecord[] = data.map(
-      (record: StatementRecord) => ({
-        ...record,
-        startBalance: new Decimal(record.startBalance),
-        mutation: new Decimal(record.mutation),
-        endBalance: new Decimal(record.endBalance),
-      })
-    );
+    const wrappedData: StatementRecordValidationResult = {
+      errors: data.errors.map(({ record, type }) => ({
+        record: this.rehydrateRecord(record),
+        type,
+      })),
+      records: data.records.map((record) => this.rehydrateRecord(record)),
+    };
 
     return wrappedData;
   }
