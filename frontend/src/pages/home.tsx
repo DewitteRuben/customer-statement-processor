@@ -13,7 +13,7 @@ const Home = () => {
         Rabobank Customer Statement Validator
       </h1>
       <FileValidationMananager onValidate={setStatementRecords} />
-      <div>
+      <div className="mt-6">
         <StatementRecordList validationResult={statementRecords} />
       </div>
     </div>

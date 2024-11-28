@@ -15,7 +15,7 @@ export const StatementRecordList: React.FC<StatementRecordListProps> = ({
   }
 
   return (
-    <div className="space-y-6">
+    <div>
       {validationResult.errors.length > 0 && (
         <div className="mb-6 space-y-2">
           <h2 className="text-lg font-semibold text-red-600">
