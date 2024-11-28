@@ -25,7 +25,7 @@ router.post(
 
     try {
       const statementRecords = statementRecordParser.parse(req.file);
-      res.status(200).json({ records: statementRecords });
+      res.status(200).json(statementRecords);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "failed to parse records" });
