@@ -30,7 +30,7 @@ const FileInput: React.FC<FileInputProps> = ({ onFileSelect, ...rest }) => {
   return (
     <div className="flex gap-6 items-center">
       {file && (
-        <div className="relative border border-black p-4">
+        <div className="relative border border-orange-600 rounded-lg p-4">
           <ul>
             <li>Name: {file.name}</li>
             <li>Type: {file.type}</li>
