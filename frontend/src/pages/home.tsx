@@ -1,12 +1,11 @@
 import { useState } from "react";
 import FileValidationMananager from "../components/FileValidationManager/filevalidationmanager";
-import { StatementRecord } from "../../../shared/types";
+import { StatementRecordValidationResult } from "../../../shared/types";
 import { StatementRecordList } from "../components/StatementRecordList/statementrecordlist";
 
 const Home = () => {
-  const [statementRecords, setStatementRecords] = useState<StatementRecord[]>(
-    []
-  );
+  const [statementRecords, setStatementRecords] =
+    useState<StatementRecordValidationResult>({ errors: [], records: [] });
 
   return (
     <div className="container mx-auto">
@@ -15,7 +14,7 @@ const Home = () => {
       </h1>
       <FileValidationMananager onValidate={setStatementRecords} />
       <div>
-        <StatementRecordList records={statementRecords} />
+        <StatementRecordList validationResult={statementRecords} />
       </div>
     </div>
   );

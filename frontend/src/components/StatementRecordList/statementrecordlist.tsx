@@ -1,20 +1,34 @@
 import React from "react";
-import { StatementRecord } from "../../../../shared/types";
 import { StatementRecordItem } from "../StatementRecordItem/statementrecorditem";
+import { StatementRecordValidationResult } from "../../../../shared/types";
+import { StatementRecordErrorItem } from "../StatementRecordErrorItem/statementrecorderroritem";
 
 interface StatementRecordListProps {
-  records: StatementRecord[];
+  validationResult: StatementRecordValidationResult;
 }
 
 export const StatementRecordList: React.FC<StatementRecordListProps> = ({
-  records,
+  validationResult,
 }) => {
-  if (!records?.length) {
+  if (!validationResult.records.length) {
     return <div></div>;
   }
 
   return (
     <div className="space-y-6">
+      {validationResult.errors.length > 0 && (
+        <div className="mb-6 space-y-2">
+          <h2 className="text-lg font-semibold text-red-600">
+            Validation Errors
+          </h2>
+          {validationResult.errors.map((error, index) => (
+            <StatementRecordErrorItem
+              key={`error-${error.record.reference}-${index}`}
+              error={error}
+            />
+          ))}
+        </div>
+      )}
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
@@ -41,12 +55,19 @@ export const StatementRecordList: React.FC<StatementRecordListProps> = ({
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {records.map((record, index) => (
-                <StatementRecordItem
-                  key={`${record.reference}-${index}`}
-                  record={record}
-                />
-              ))}
+              {validationResult.records.map((record, index) => {
+                const hasError = validationResult.errors.some(
+                  (error) => error.record.reference === record.reference
+                );
+
+                return (
+                  <StatementRecordItem
+                    hasError={hasError}
+                    key={`${record.reference}-${index}`}
+                    record={record}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -4,10 +4,12 @@ import { StatementRecord } from "../../../../shared/types";
 
 interface StatementRecordItemProps {
   record: StatementRecord;
+  hasError?: boolean;
 }
 
 export const StatementRecordItem: React.FC<StatementRecordItemProps> = ({
   record,
+  hasError = false,
 }) => {
   const getMutationColorClass = (amount: Decimal): string => {
     if (amount.isPos()) return "text-green-600";
@@ -16,7 +18,7 @@ export const StatementRecordItem: React.FC<StatementRecordItemProps> = ({
   };
 
   return (
-    <tr>
+    <tr className={`${hasError ? "bg-red-50" : "hover:bg-gray-50"}`}>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
         <div className="flex items-center space-x-2">
           <span>{record.reference}</span>
@@ -34,6 +36,7 @@ export const StatementRecordItem: React.FC<StatementRecordItemProps> = ({
           record.mutation
         )}`}
       >
+        {record.mutation.isPos() ? "+" : ""}
         {record.mutation.toString()}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">

@@ -2,10 +2,10 @@ import { useState } from "react";
 import FileInput from "../FileInput/fileinput";
 import Button from "../Button/button";
 import statementProcessorApi from "../../api/api";
-import { StatementRecord } from "../../../../shared/types";
+import { StatementRecordValidationResult } from "../../../../shared/types";
 
 type FileValidationMananagerProps = {
-  onValidate?: (statementRecords: StatementRecord[]) => void;
+  onValidate?: (statementRecords: StatementRecordValidationResult) => void;
 };
 
 const FileValidationMananager: React.FC<FileValidationMananagerProps> = ({
