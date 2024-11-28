@@ -1,8 +1,10 @@
+import Decimal from "decimal.js";
+
 export type StatementRecord = {
   reference: number;
   accountNumber: string;
   description: string;
-  startBalance: number;
-  mutation: number;
-  endBalance: number;
+  startBalance: Decimal;
+  mutation: Decimal;
+  endBalance: Decimal;
 };
