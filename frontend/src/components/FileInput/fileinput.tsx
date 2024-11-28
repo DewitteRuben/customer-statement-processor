@@ -2,9 +2,12 @@ import { useState } from "react";
 
 type FileInputProps = {
   onFileSelect?: (file: File) => void;
-};
+} & React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
-const FileInput: React.FC<FileInputProps> = ({ onFileSelect }) => {
+const FileInput: React.FC<FileInputProps> = ({ onFileSelect, ...rest }) => {
   const [file, setFile] = useState<File | null>(null);
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +42,7 @@ const FileInput: React.FC<FileInputProps> = ({ onFileSelect }) => {
           id="file_input"
           onChange={onFileChange}
           type="file"
+          {...rest}
         />
       </label>
     </div>
