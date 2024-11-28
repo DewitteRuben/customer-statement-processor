@@ -89,8 +89,8 @@ describe("StatementRecordParser CSV", () => {
 
       const result = statementRecordParser.parse(mockCSVFile);
       expect(result).toHaveLength(1);
-      expect(result[0].accountNumber).toBe("NL12ABNA3214567890");
-      expect(result[0].description).toBe("Salary");
+      expect(result[0]?.accountNumber).toBe("NL12ABNA3214567890");
+      expect(result[0]?.description).toBe("Salary");
     });
   });
 });

@@ -150,8 +150,8 @@ describe("Statement Record Validation", () => {
 
       const errors = validateRecords(records);
       expect(errors).toHaveLength(2);
-      expect(errors[0].type).toBe("reference");
-      expect(errors[1].type).toBe("reference");
+      expect(errors[0]?.type).toBe("reference");
+      expect(errors[1]?.type).toBe("reference");
     });
 
     it("should detect balance calculation errors", () => {
@@ -168,7 +168,7 @@ describe("Statement Record Validation", () => {
 
       const errors = validateRecords(records);
       expect(errors).toHaveLength(1);
-      expect(errors[0].type).toBe("balance");
+      expect(errors[0]?.type).toBe("balance");
     });
 
     it("should detect both reference and balance errors", () => {
@@ -193,9 +193,9 @@ describe("Statement Record Validation", () => {
 
       const errors = validateRecords(records);
       expect(errors).toHaveLength(3);
-      expect(errors[0].type).toBe("reference");
-      expect(errors[1].type).toBe("reference");
-      expect(errors[2].type).toBe("balance");
+      expect(errors[0]?.type).toBe("reference");
+      expect(errors[1]?.type).toBe("reference");
+      expect(errors[2]?.type).toBe("balance");
     });
   });
 });
