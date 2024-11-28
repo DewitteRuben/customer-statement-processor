@@ -30,19 +30,19 @@ const FileInput: React.FC<FileInputProps> = ({ onFileSelect, ...rest }) => {
   return (
     <div className="flex gap-6 items-center">
       {file && (
-        <section className="relative">
+        <div className="relative border border-black p-4">
           <ul>
             <li>Name: {file.name}</li>
             <li>Type: {file.type}</li>
             <li>Size: {file.size} bytes</li>
           </ul>
-          <span
+          <button
             onClick={onHandleClearFile}
-            className="absolute -top-3 -right-2 hover:cursor-pointer"
+            className="absolute -top-3 -right-3 flex p-2 leading-[50%] justify-center items-center bg-orange-500 rounded-full text-white"
           >
-            X
-          </span>
-        </section>
+            x
+          </button>
+        </div>
       )}
       {!file && (
         <label

@@ -34,15 +34,19 @@ const FileValidationMananager: React.FC<FileValidationMananagerProps> = ({
   };
 
   return (
-    <div>
-      <div className="mb-3">
+    <div className="flex flex-col items-center">
+      <div className="mb-4">
         <FileInput
           onFileSelect={setFile}
           name="statement_record"
           accept=".csv, .xml"
         />
       </div>
-      {file && <Button onClick={onValidateClick} text="Validate records" />}
+      <Button
+        onClick={onValidateClick}
+        disabled={!file}
+        text="Validate records"
+      />
     </div>
   );
 };

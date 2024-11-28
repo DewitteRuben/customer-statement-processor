@@ -8,10 +8,8 @@ const Home = () => {
     useState<StatementRecordValidationResult>({ errors: [], records: [] });
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-lg font-bold mb-4">
-        Rabobank Customer Statement Validator
-      </h1>
+    <div className="container mx-auto flex flex-col items-center mt-6">
+      <h1 className="text-3xl font-bold mb-4">Customer Statement Validator</h1>
       <FileValidationMananager onValidate={setStatementRecords} />
       <div className="mt-6">
         <StatementRecordList validationResult={statementRecords} />
