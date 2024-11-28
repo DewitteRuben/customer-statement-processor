@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import multer, { memoryStorage } from "multer";
+import statementRecordParser from "../parser/parser";
 
 const upload = multer({ storage: memoryStorage() });
 
@@ -11,16 +12,24 @@ router.post(
   upload.single("statement_record"),
   (req: Request, res: Response) => {
     if (!req.file) {
-      res.status(400).json({ text: "invalid request, file is missing" });
+      res.status(400).json({ message: "invalid request, file is missing" });
       return;
     }
 
     if (!supportedFileTypes.includes(req.file?.mimetype)) {
-      res.status(400).json({ text: "invalid request, unsupported file type" });
+      res
+        .status(400)
+        .json({ message: "invalid request, unsupported file type" });
       return;
     }
 
-    res.status(200).json({ contents: req.file.buffer.toString() });
+    try {
+      const statementRecords = statementRecordParser.parse(req.file);
+      res.status(200).json({ records: statementRecords });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "failed to parse records" });
+    }
   }
 );
 
