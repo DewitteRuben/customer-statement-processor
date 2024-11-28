@@ -1,8 +1,12 @@
 {
+    "frontend/**/*.{js,jsx,ts,tsx}": [
+        "npx eslint frontend/ --fix --config frontend/eslint.config.js"
+    ],
+    "backend/**/*.{js,jsx,ts,tsx}": [
+        "npx eslint backend/ --fix --config backend/eslint.config.mjs"
+    ],
     "**/*.{js,jsx,ts,tsx}": [
-        "prettier -w",
-        "eslint --fix frontend/** --config frontend/eslint.config.js",
-        "eslint --fix backend/** --config backend/eslint.config.mjs"
+        "prettier -w"
     ],
     "**/*.{html,json,css,scss,md,mdx}": [
         "prettier -w"
