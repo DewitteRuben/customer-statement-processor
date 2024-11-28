@@ -11,7 +11,7 @@ type FileValidationMananagerProps = {
 const FileValidationMananager: React.FC<FileValidationMananagerProps> = ({
   onValidate,
 }) => {
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<File | null>();
 
   const onValidateClick = async () => {
     if (file) {

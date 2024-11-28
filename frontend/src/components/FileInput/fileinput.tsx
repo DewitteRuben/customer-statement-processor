@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type FileInputProps = {
-  onFileSelect?: (file: File) => void;
+  onFileSelect?: (file: File | null) => void;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -20,31 +20,46 @@ const FileInput: React.FC<FileInputProps> = ({ onFileSelect, ...rest }) => {
     }
   };
 
+  const onHandleClearFile = () => {
+    setFile(null);
+    if (onFileSelect) {
+      onFileSelect(null);
+    }
+  };
+
   return (
     <div className="flex gap-6 items-center">
       {file && (
-        <section>
+        <section className="relative">
           <ul>
             <li>Name: {file.name}</li>
             <li>Type: {file.type}</li>
             <li>Size: {file.size} bytes</li>
           </ul>
+          <span
+            onClick={onHandleClearFile}
+            className="absolute -top-3 -right-2 hover:cursor-pointer"
+          >
+            X
+          </span>
         </section>
       )}
-      <label
-        htmlFor="file_input"
-        role="button"
-        className="p-12 border-dotted border-2 border-orange-600"
-      >
-        Drag & Drop or Click to upload a file
-        <input
-          className="hidden"
-          id="file_input"
-          onChange={onFileChange}
-          type="file"
-          {...rest}
-        />
-      </label>
+      {!file && (
+        <label
+          htmlFor="file_input"
+          role="button"
+          className="p-4 border-dotted border-2 border-orange-600"
+        >
+          Click to upload a file
+          <input
+            className="hidden"
+            id="file_input"
+            onChange={onFileChange}
+            type="file"
+            {...rest}
+          />
+        </label>
+      )}
     </div>
   );
 };

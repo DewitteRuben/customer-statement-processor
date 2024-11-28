@@ -16,7 +16,7 @@ describe("FileInput Component", () => {
     render(<FileInput />);
 
     const input = screen.getByLabelText(
-      /Drag & Drop or Click to upload a file/i
+      /Click to upload a file/i
     );
 
     fireEvent.change(input, { target: { files: [testFile] } });
@@ -35,7 +35,7 @@ describe("FileInput Component", () => {
     render(<FileInput onFileSelect={onFileSelectMock} />);
 
     const input = screen.getByLabelText(
-      "Drag & Drop or Click to upload a file"
+      "Click to upload a file"
     );
 
     fireEvent.change(input, { target: { files: [testFile] } });
