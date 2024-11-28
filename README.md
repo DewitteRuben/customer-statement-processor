@@ -13,7 +13,7 @@ In addition, a complete list of all records will be shown.
 
 2. **Start the Services**
 
-### Backend
+#### Backend
 
 Navigate to the `backend/` directory and start the backend service by running:
 
@@ -24,10 +24,10 @@ npm start
 If you prefer to use Bun, you can run:
 
 ```bash
-npm start:bun
+npm run start:bun
 ```
 
-### Frontend
+#### Frontend
 
 Navigate to the `frontend/` directory and start the frontend service by running:
 
