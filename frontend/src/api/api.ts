@@ -4,6 +4,16 @@ import {
   StatementRecordValidationResult,
 } from "@customer-statement-processor/shared";
 
+type StatementProcessorAPIErrorResponse = {
+  message: string;
+};
+
+export class StatementProcessorAPIError extends Error {
+  constructor(message: string) {
+    super(message);
+  }
+}
+
 class StatementProcessorAPI {
   private baseURL: string = "http://localhost:3000/api";
 
@@ -20,13 +30,24 @@ class StatementProcessorAPI {
     const formData = new FormData();
     formData.append("statement_record", file);
 
-    const data: StatementRecordValidationResult = await fetch(
-      `${this.baseURL}/validate`,
-      {
-        method: "POST",
-        body: formData,
-      },
-    ).then((res) => res.json());
+    const response = await fetch(`${this.baseURL}/validate`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const responseJSON:
+      | StatementRecordValidationResult
+      | StatementProcessorAPIErrorResponse = await response.json();
+
+    if (response.status !== 200) {
+      if ("message" in responseJSON) {
+        throw new StatementProcessorAPIError(responseJSON.message);
+      } else {
+        throw new StatementProcessorAPIError("an error has occurred");
+      }
+    }
+
+    const data = responseJSON as StatementRecordValidationResult;
 
     // Rewrap the data, converting the proper fields into Decimal objects
     const wrappedData: StatementRecordValidationResult = {
