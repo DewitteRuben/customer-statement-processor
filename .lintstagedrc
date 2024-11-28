@@ -1,0 +1,10 @@
+{
+    "**/*.{js,jsx,ts,tsx}": [
+        "prettier -w",
+        "eslint --fix frontend/** --config frontend/eslint.config.js",
+        "eslint --fix backend/** --config backend/eslint.config.mjs"
+    ],
+    "**/*.{html,json,css,scss,md,mdx}": [
+        "prettier -w"
+    ]
+}
