@@ -38,6 +38,10 @@ npm run dev
 3. **Access the Application**  
    Once the services are running, visit [http://localhost:5173](http://localhost:5173) to use the application (default Vite endpoint).
 
+## Development
+
+In addition to running `npm install` in the `frontend/`, `backend/`, and root folders, ensure you also run `npm install` in the `shared/` folder to ensure all dependencies are properly installed.
+
 ## Running the Tests
 
 To run all tests for both the frontend and backend, use the command: `npm test`
